@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "container:constants.h">
+   </FileRef>
+   <FileRef
+      location = "container:main.cpp">
+   </FileRef>
+   <FileRef
+      location = "container:neuron.cpp">
+   </FileRef>
+   <FileRef
+      location = "container:neuron.hpp">
+   </FileRef>
+   <FileRef
+      location = "container:unittest.cpp">
+   </FileRef>
+</Workspace>

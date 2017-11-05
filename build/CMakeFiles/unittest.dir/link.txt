@@ -1,0 +1,1 @@
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -O3 -W -Wall -pedantic -std=c++11 -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/unittest.dir/neuron.cpp.o CMakeFiles/unittest.dir/unittest.cpp.o  -o unittest gtest/libgtest.a gtest/libgtest_main.a gtest/libgtest.a 
