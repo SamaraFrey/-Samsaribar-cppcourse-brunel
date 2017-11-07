@@ -22,13 +22,13 @@ const double R = 20;        //!< constant
 const double treshold = 20; //!< mV potential when it spikes
 const double refactime = 2; //!< ms time it takes to be able to take another spike
 const double J = 0.1;       //!< mV potential given by background
-const int g = -5;           //!< ratio Ji/Je -> can be changed for different graphs
+const int g = 5;           //!< ratio Ji/Je -> can be changed for different graphs
 const double D = 1.5;       //!< ms delay because of distance of neurons
 const int bufferSize = static_cast<int>(D/h) + 1; //!<size of buffer vector -> instead of calculating it each time
 
 //!< specific values for in-/exhibitory neurons
 const double Je = 0.1;       //!< mV potential given by a exhibitory neuron
-const double Ji = Je * g;      //!< mv potential given by a inhibitory neuron
+const double Ji = -Je * g;      //!< mv potential given by a inhibitory neuron
 
 const int Ne = 10000;        //!< amount of exhib neurons
 const int Ni = 2500;         //!< amount of inhib neurons

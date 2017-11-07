@@ -131,19 +131,11 @@ int main() {
     //! Programm works with time steps, convert time
     timeStop = val/h;
     
-    //! Open a new files
-    ofstream write;
-    write.open("memPotValues.txt");
-    
+    //! Open a new file
     ofstream spikes;
     spikes.open("spikes.txt");
 
-    //! Check that files are open
-    if(write.is_open()){
-        cout << "The membrane potential file is open now." << endl;
-    } else {
-        cout << "The membrane potential file is still closed." << endl;
-    }
+    //! Check that file are open
     
     if(spikes.is_open()){
         cout << "The spike file is open now." << endl;
@@ -152,11 +144,7 @@ int main() {
     }
     
     
-    //! Check that opening of files didn't fail
-    if (write.fail() == true){
-        cout << "Error, I could not open the membrane potential file for you." << endl;
-        return 0;
-    }
+    //! Check that opening of file didn't fail
 
     if (spikes.fail() == true){
         cout << "Error, I could not open a the spike file for you." << endl;
@@ -186,10 +174,6 @@ int main() {
                 }
             }
             
-            //!< Store Membran potential in a seperate file
-            double enter = allNeuron[i].getMemPot();
-            write << enter;
-            write << endl;
         }
 
         ++time;
@@ -203,13 +187,18 @@ int main() {
     /*!
      Here we store the data of the spikes in a seperate file which has been opened before. We need this for being able to recreate the histogramm and other graphs. In the iteration we also free and delete the pointers of the connection vector of each neuron. The destructor of the neuron will be called automatically at the end of the programm -> no need to call it manually.
     */
+    
+    int displayTimeStart = 1000; //! ms
+    int displayTimeEnd = 1200;
 
     for(size_t i = 0; i < allNeuron.size(); ++i){
         
         //!< store the spike times in file
         for(size_t j = 0; j < allNeuron[i].getSpikeVectSize(); ++j){
             double val = allNeuron[i].getSpikeVect(j);
-            spikes << val << '\t' << i << '\n';
+            if(val <= displayTimeEnd and val >= displayTimeStart){
+                spikes << val << '\t' << i << '\n';
+            }
         }
         
         //!< free pointers and delete them
@@ -219,8 +208,7 @@ int main() {
         }
     }
 
-    //! Close the files that we have written into
-    write.close();
+    //! Close the file that we have written into
     spikes.close();
     
     return 0;
