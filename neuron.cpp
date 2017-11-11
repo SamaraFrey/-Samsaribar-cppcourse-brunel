@@ -8,11 +8,11 @@
 
 
 /**
-* This is the main class for neurons, afterwards we will have subclasses which inherit from it.
+* This is the main class for neurons, afterwards we will have subtypes with different values for J, therefore an explicit constructor has been created to be able to ensure this differences.
 *  -> inhibitory and excitatory
 * Each neuron has certain amount of connections, some spike it gives and receives and its  own local clock.
 *
-* We store how many spikes it does and when they occur. The membrane potentials of the neuron are going to be printed into a seperate file -> this happens in main.
+* We store how many spikes occur in a neuron and when they do. This will come in handy for creating the graphs which have been asked for.
 */
 
 #include "neuron.hpp"
@@ -66,7 +66,7 @@ void Neuron::putInVector(double time){
  * @return true if neuron spiked
  */
 
-bool Neuron::update(int time, double extCurr){
+bool Neuron::update(int time, double extCurr, double lambda){
     /*!
      Since buffer has size D/h+1 the time is going to exceed it fast.
      Therefore we interate through the buffervector and start again everytime when we exceed it, we take the modulo of the timeStep and the buffersize to be sure where to access the buffer at.

@@ -83,6 +83,8 @@ Functions</h2></td></tr>
 <tr class="separator:a1cd50acc8515f5cf523e4b5f76695e59"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6a3a96f9fda0fd1ea3d4fb4d8b237cb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unittest_8cpp.html#af6a3a96f9fda0fd1ea3d4fb4d8b237cb">TEST</a> (NeuronTest, Spiked)</td></tr>
 <tr class="separator:af6a3a96f9fda0fd1ea3d4fb4d8b237cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad94c8421eb019f0b3ae551bb4c4f9bd3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unittest_8cpp.html#ad94c8421eb019f0b3ae551bb4c4f9bd3">TEST</a> (NeuronTest, ResetMembranePot)</td></tr>
+<tr class="separator:ad94c8421eb019f0b3ae551bb4c4f9bd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unittest_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a> (int argc, char **argv)</td></tr>
 <tr class="separator:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -116,7 +118,7 @@ Functions</h2></td></tr>
 </div>
 </div>
 <a id="ac8fffa2c41bf0fded308ea33cc99edc0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac8fffa2c41bf0fded308ea33cc99edc0">&#9670;&nbsp;</a></span>TEST() <span class="overload">[1/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8fffa2c41bf0fded308ea33cc99edc0">&#9670;&nbsp;</a></span>TEST() <span class="overload">[1/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -140,11 +142,12 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>TESTING: that membrane potential is never over 30. Technically the membrane potential can overexceed the threshold, but only to a certain amount. </p>
 
 </div>
 </div>
 <a id="a9ae3ddd73abc5bb7f258532c33b7823d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9ae3ddd73abc5bb7f258532c33b7823d">&#9670;&nbsp;</a></span>TEST() <span class="overload">[2/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ae3ddd73abc5bb7f258532c33b7823d">&#9670;&nbsp;</a></span>TEST() <span class="overload">[2/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -168,11 +171,12 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>TESTING: the membrane potential can never be smaller then 0 having an exhibitory neuron </p>
 
 </div>
 </div>
 <a id="afb68d14b9cc6e43d7e865793296d636e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afb68d14b9cc6e43d7e865793296d636e">&#9670;&nbsp;</a></span>TEST() <span class="overload">[3/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#afb68d14b9cc6e43d7e865793296d636e">&#9670;&nbsp;</a></span>TEST() <span class="overload">[3/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -196,11 +200,12 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>TESTING: check that the clock is the same as the global time </p>
 
 </div>
 </div>
 <a id="a1cd50acc8515f5cf523e4b5f76695e59"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1cd50acc8515f5cf523e4b5f76695e59">&#9670;&nbsp;</a></span>TEST() <span class="overload">[4/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a1cd50acc8515f5cf523e4b5f76695e59">&#9670;&nbsp;</a></span>TEST() <span class="overload">[4/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -224,11 +229,12 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>TESTING: check that the connection vector increases in size if a neuron gets a connection (first element is always nullptr, so size = amount of connection+1) </p>
 
 </div>
 </div>
 <a id="af6a3a96f9fda0fd1ea3d4fb4d8b237cb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af6a3a96f9fda0fd1ea3d4fb4d8b237cb">&#9670;&nbsp;</a></span>TEST() <span class="overload">[5/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#af6a3a96f9fda0fd1ea3d4fb4d8b237cb">&#9670;&nbsp;</a></span>TEST() <span class="overload">[5/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -252,6 +258,38 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>TESTING: if the external current is 0, then the neuron will not spike. If the external current is incredibely high, it must have spiked and therefore increase the spikeVectSize by 1. </p>
+<p>&lt; the neuron can't have spiked at time 0 without an external current</p>
+<p>&lt; Make neuron spike -&gt; it spikes in the update and increases the size of the spike Vect </p>
+
+</div>
+</div>
+<a id="ad94c8421eb019f0b3ae551bb4c4f9bd3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad94c8421eb019f0b3ae551bb4c4f9bd3">&#9670;&nbsp;</a></span>TEST() <span class="overload">[6/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TEST </td>
+          <td>(</td>
+          <td class="paramtype">NeuronTest&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ResetMembranePot&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>TESTING: If the external current is incredibely high, it must have spiked and therefore have a membrane potential that is 0. </p>
 
 </div>
 </div>

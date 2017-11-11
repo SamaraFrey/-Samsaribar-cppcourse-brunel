@@ -20,7 +20,7 @@
 TEST (NeuronTest, MembranePotential){
     Neuron neuron;
     
-    neuron.update(1, 0);
+    neuron.update(1, 0, 2);
     ASSERT_TRUE(neuron.getMemPot() < 30);
 }
 
@@ -29,9 +29,9 @@ TEST (NeuronTest, MembranePotential){
  */
 
 TEST (NeuronTest, ExMembranePotential){
-    Exhibitory neuron;
+    Neuron neuron(Je);
     
-    neuron.update(1, 0);
+    neuron.update(1, 0, 2);
     ASSERT_TRUE(neuron.getMemPot() >= 0);
 }
 
@@ -42,7 +42,7 @@ TEST (NeuronTest, ExMembranePotential){
 TEST (NeuronTest, TimeComparison){
     Neuron neuron;
     
-    neuron.update(1, 0);
+    neuron.update(1, 0, 2);
     ASSERT_EQ(neuron.getClock(), 1);
 }
 
@@ -64,13 +64,13 @@ TEST (NeuronTest, ConnectionSize){
 
 TEST (NeuronTest, Spiked){
     Neuron neuron;
-    neuron.update(0, 0);
+    neuron.update(0, 0, 2);
     
     //!< the neuron can't have spiked at time 0 without an external current
     ASSERT_NE(neuron.spiked(), true);
     
     //!< Make neuron spike -> it spikes in the update and increases the size of the spike Vect
-    neuron.update(0, 1000);
+    neuron.update(0, 1000, 2);
     ASSERT_TRUE(neuron.getSpikeVectSize() == 1);
 }
 
@@ -81,7 +81,7 @@ TEST (NeuronTest, Spiked){
 TEST (NeuronTest, ResetMembranePot){
     Neuron neuron;
     
-    neuron.update(0, 1000);
+    neuron.update(0, 1000, 2);
     ASSERT_TRUE(neuron.getMemPot() == 0);
 }
 

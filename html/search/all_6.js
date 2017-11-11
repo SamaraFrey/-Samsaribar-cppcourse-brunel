@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['g',['g',['../constants_8h.html#aece2eeedca2f58e31a680503a9b7e972',1,'constants.h']]],
   ['getclock',['getClock',['../class_neuron.html#a0c6f3326a19ca4623f7a53b4b82e69ce',1,'Neuron']]],
   ['getconnecsize',['getConnecSize',['../class_neuron.html#a68bd47e91a15162f7ce767c5350260f2',1,'Neuron']]],
   ['getconnectneuron',['getConnectNeuron',['../class_neuron.html#a94672ed8219d66ee2fa6c73bec1c775b',1,'Neuron']]],

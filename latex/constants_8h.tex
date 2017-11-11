@@ -1,0 +1,222 @@
+\section{constants.\+h File Reference}
+\label{constants_8h}\index{constants.\+h@{constants.\+h}}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const double \textbf{ tau} = 20
+\begin{DoxyCompactList}\small\item\em ms constant \end{DoxyCompactList}\item 
+const double \textbf{ h} = 0.\+1
+\begin{DoxyCompactList}\small\item\em ms constant \end{DoxyCompactList}\item 
+const double \textbf{ R} = 20
+\begin{DoxyCompactList}\small\item\em constant \end{DoxyCompactList}\item 
+const double \textbf{ treshold} = 20
+\begin{DoxyCompactList}\small\item\em mV potential when it spikes \end{DoxyCompactList}\item 
+const double \textbf{ refactime} = 2
+\begin{DoxyCompactList}\small\item\em ms time it takes to be able to take another spike \end{DoxyCompactList}\item 
+const double \textbf{ J} = 0.\+1
+\begin{DoxyCompactList}\small\item\em mV potential given by background \end{DoxyCompactList}\item 
+const int \textbf{ g} = 5
+\begin{DoxyCompactList}\small\item\em ratio Ji/\+Je -\/$>$ can be changed for different graphs \end{DoxyCompactList}\item 
+const double \textbf{ D} = 1.\+5
+\begin{DoxyCompactList}\small\item\em ms delay because of distance of neurons \end{DoxyCompactList}\item 
+const int \textbf{ buffer\+Size} = static\+\_\+cast$<$int$>$(\textbf{ D}/\textbf{ h}) + 1
+\begin{DoxyCompactList}\small\item\em size of buffer vector -\/$>$ instead of calculating it each time \end{DoxyCompactList}\item 
+const double \textbf{ Je} = 0.\+1
+\begin{DoxyCompactList}\small\item\em mV potential given by a exhibitory neuron \end{DoxyCompactList}\item 
+const double \textbf{ Ji} = -\/\textbf{ Je} $\ast$ \textbf{ g}
+\begin{DoxyCompactList}\small\item\em mv potential given by a inhibitory neuron \end{DoxyCompactList}\item 
+const int \textbf{ Ne} = 10000
+\begin{DoxyCompactList}\small\item\em amount of exhib neurons \end{DoxyCompactList}\item 
+const int \textbf{ Ni} = 2500
+\begin{DoxyCompactList}\small\item\em amount of inhib neurons \end{DoxyCompactList}\item 
+const int \textbf{ Ce} = \textbf{ Ne}/10
+\begin{DoxyCompactList}\small\item\em amount of connection exhibitory \end{DoxyCompactList}\item 
+const int \textbf{ Ci} = \textbf{ Ni}/10
+\begin{DoxyCompactList}\small\item\em amount of connection inhibitory \end{DoxyCompactList}\item 
+const double \textbf{ frequency\+Th} = \textbf{ treshold}/(\textbf{ Ce}$\ast$\textbf{ Je}$\ast$\textbf{ tau})
+\begin{DoxyCompactList}\small\item\em Variables for distributions. \end{DoxyCompactList}\item 
+const double \textbf{ frequency\+Ext} = 2 $\ast$ \textbf{ frequency\+Th}
+\item 
+const double \textbf{ lambda} = \textbf{ frequency\+Ext} $\ast$ \textbf{ Ne} $\ast$ \textbf{ h} $\ast$ \textbf{ Je}
+\begin{DoxyCompactList}\small\item\em constant to be used in possiondistribution \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Variable Documentation}
+\mbox{\label{constants_8h_a4cb7aa26412b9517e92b492fa0386879}} 
+\index{constants.\+h@{constants.\+h}!buffer\+Size@{buffer\+Size}}
+\index{buffer\+Size@{buffer\+Size}!constants.\+h@{constants.\+h}}
+\subsubsection{buffer\+Size}
+{\footnotesize\ttfamily const int buffer\+Size = static\+\_\+cast$<$int$>$(\textbf{ D}/\textbf{ h}) + 1}
+
+
+
+size of buffer vector -\/$>$ instead of calculating it each time 
+
+specific values for in-\//exhibitory neurons \mbox{\label{constants_8h_a4a9fd51283b56aa467c2c1897f1f91f7}} 
+\index{constants.\+h@{constants.\+h}!Ce@{Ce}}
+\index{Ce@{Ce}!constants.\+h@{constants.\+h}}
+\subsubsection{Ce}
+{\footnotesize\ttfamily const int Ce = \textbf{ Ne}/10}
+
+
+
+amount of connection exhibitory 
+
+\mbox{\label{constants_8h_ad5c0cafea18f89372a01f215f23976bb}} 
+\index{constants.\+h@{constants.\+h}!Ci@{Ci}}
+\index{Ci@{Ci}!constants.\+h@{constants.\+h}}
+\subsubsection{Ci}
+{\footnotesize\ttfamily const int Ci = \textbf{ Ni}/10}
+
+
+
+amount of connection inhibitory 
+
+\mbox{\label{constants_8h_a412464ee5e4d4e873c365d926d1970bb}} 
+\index{constants.\+h@{constants.\+h}!D@{D}}
+\index{D@{D}!constants.\+h@{constants.\+h}}
+\subsubsection{D}
+{\footnotesize\ttfamily const double D = 1.\+5}
+
+
+
+ms delay because of distance of neurons 
+
+\mbox{\label{constants_8h_afb508c9e901b233efc4bfaa68d629570}} 
+\index{constants.\+h@{constants.\+h}!frequency\+Ext@{frequency\+Ext}}
+\index{frequency\+Ext@{frequency\+Ext}!constants.\+h@{constants.\+h}}
+\subsubsection{frequency\+Ext}
+{\footnotesize\ttfamily const double frequency\+Ext = 2 $\ast$ \textbf{ frequency\+Th}}
+
+\mbox{\label{constants_8h_a35bcf347fb4545809fe41b549784498a}} 
+\index{constants.\+h@{constants.\+h}!frequency\+Th@{frequency\+Th}}
+\index{frequency\+Th@{frequency\+Th}!constants.\+h@{constants.\+h}}
+\subsubsection{frequency\+Th}
+{\footnotesize\ttfamily const double frequency\+Th = \textbf{ treshold}/(\textbf{ Ce}$\ast$\textbf{ Je}$\ast$\textbf{ tau})}
+
+
+
+Variables for distributions. 
+
+\mbox{\label{constants_8h_aece2eeedca2f58e31a680503a9b7e972}} 
+\index{constants.\+h@{constants.\+h}!g@{g}}
+\index{g@{g}!constants.\+h@{constants.\+h}}
+\subsubsection{g}
+{\footnotesize\ttfamily const int g = 5}
+
+
+
+ratio Ji/\+Je -\/$>$ can be changed for different graphs 
+
+\mbox{\label{constants_8h_aa6e8e201edf24007dc075bfef6e8210c}} 
+\index{constants.\+h@{constants.\+h}!h@{h}}
+\index{h@{h}!constants.\+h@{constants.\+h}}
+\subsubsection{h}
+{\footnotesize\ttfamily const double h = 0.\+1}
+
+
+
+ms constant 
+
+\mbox{\label{constants_8h_abb4f6430d98825c1e2344074ee09c57a}} 
+\index{constants.\+h@{constants.\+h}!J@{J}}
+\index{J@{J}!constants.\+h@{constants.\+h}}
+\subsubsection{J}
+{\footnotesize\ttfamily const double J = 0.\+1}
+
+
+
+mV potential given by background 
+
+\mbox{\label{constants_8h_a39898975b4c6d6a29e121e7e4b350a2c}} 
+\index{constants.\+h@{constants.\+h}!Je@{Je}}
+\index{Je@{Je}!constants.\+h@{constants.\+h}}
+\subsubsection{Je}
+{\footnotesize\ttfamily const double Je = 0.\+1}
+
+
+
+mV potential given by a exhibitory neuron 
+
+\mbox{\label{constants_8h_ac96467d7ddc139a268b00c766205fd04}} 
+\index{constants.\+h@{constants.\+h}!Ji@{Ji}}
+\index{Ji@{Ji}!constants.\+h@{constants.\+h}}
+\subsubsection{Ji}
+{\footnotesize\ttfamily const double Ji = -\/\textbf{ Je} $\ast$ \textbf{ g}}
+
+
+
+mv potential given by a inhibitory neuron 
+
+\mbox{\label{constants_8h_a01c828218289eff2af40b9cdf043393f}} 
+\index{constants.\+h@{constants.\+h}!lambda@{lambda}}
+\index{lambda@{lambda}!constants.\+h@{constants.\+h}}
+\subsubsection{lambda}
+{\footnotesize\ttfamily const double lambda = \textbf{ frequency\+Ext} $\ast$ \textbf{ Ne} $\ast$ \textbf{ h} $\ast$ \textbf{ Je}}
+
+
+
+constant to be used in possiondistribution 
+
+\mbox{\label{constants_8h_a78f078e19c99a6fc51a8bc2adb8acfa0}} 
+\index{constants.\+h@{constants.\+h}!Ne@{Ne}}
+\index{Ne@{Ne}!constants.\+h@{constants.\+h}}
+\subsubsection{Ne}
+{\footnotesize\ttfamily const int Ne = 10000}
+
+
+
+amount of exhib neurons 
+
+\mbox{\label{constants_8h_a7f259aefd534417d68d4587e7eaacc55}} 
+\index{constants.\+h@{constants.\+h}!Ni@{Ni}}
+\index{Ni@{Ni}!constants.\+h@{constants.\+h}}
+\subsubsection{Ni}
+{\footnotesize\ttfamily const int Ni = 2500}
+
+
+
+amount of inhib neurons 
+
+\mbox{\label{constants_8h_a0877420f3d7b1f47b871d2ccb47168d8}} 
+\index{constants.\+h@{constants.\+h}!R@{R}}
+\index{R@{R}!constants.\+h@{constants.\+h}}
+\subsubsection{R}
+{\footnotesize\ttfamily const double R = 20}
+
+
+
+constant 
+
+\mbox{\label{constants_8h_af4833bd02aabd3f9bd897677d3a4acb1}} 
+\index{constants.\+h@{constants.\+h}!refactime@{refactime}}
+\index{refactime@{refactime}!constants.\+h@{constants.\+h}}
+\subsubsection{refactime}
+{\footnotesize\ttfamily const double refactime = 2}
+
+
+
+ms time it takes to be able to take another spike 
+
+\mbox{\label{constants_8h_a9a42c4d90eb9808c60bb3f1be6a0c1a7}} 
+\index{constants.\+h@{constants.\+h}!tau@{tau}}
+\index{tau@{tau}!constants.\+h@{constants.\+h}}
+\subsubsection{tau}
+{\footnotesize\ttfamily const double tau = 20}
+
+
+
+ms constant 
+
+$<$ constants.\+h SV Project
+
+Created by Samara Frey on 02.\+10.\+17. Copyright © 2017 Samara Frey. All rights reserved. This file contains all the constant we use for the equations All the time measurments will be in ms. All the potentials are in mV. \mbox{\label{constants_8h_a82a0ca3ab70a0a31c932651ac335723a}} 
+\index{constants.\+h@{constants.\+h}!treshold@{treshold}}
+\index{treshold@{treshold}!constants.\+h@{constants.\+h}}
+\subsubsection{treshold}
+{\footnotesize\ttfamily const double treshold = 20}
+
+
+
+mV potential when it spikes 
+

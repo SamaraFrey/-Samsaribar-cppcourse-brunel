@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['start',['start',['../struct_interval.html#ae63ae31c07265309f48a39ce2472b692',1,'Interval']]]
+  ['r',['R',['../constants_8h.html#a0877420f3d7b1f47b871d2ccb47168d8',1,'constants.h']]],
+  ['refactime',['refactime',['../constants_8h.html#af4833bd02aabd3f9bd897677d3a4acb1',1,'constants.h']]]
 ];

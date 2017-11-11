@@ -76,6 +76,7 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_interval.html">Interval</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure for <a class="el" href="struct_interval.html" title="Structure for Interval. Since we enter an interval for our time limitations. ">Interval</a>. Since we enter an interval for our time limitations.  <a href="struct_interval.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -85,6 +86,8 @@ Functions</h2></td></tr>
 <tr class="separator:af86d5b91822a38a917e8bf420581425e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3733080ed023d8e513d379e329a58c85"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_interval.html">Interval</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a3733080ed023d8e513d379e329a58c85">setInterval</a> ()</td></tr>
 <tr class="separator:a3733080ed023d8e513d379e329a58c85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd8975ff2a6235c3d1f28f95223c4d46"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#afd8975ff2a6235c3d1f28f95223c4d46">explainValues</a> ()</td></tr>
+<tr class="separator:afd8975ff2a6235c3d1f28f95223c4d46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d9e56d959df537267c02e52c5badcb1"><td class="memItemLeft" align="right" valign="top">vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a0d9e56d959df537267c02e52c5badcb1">getRandom</a> (int nbrChoose, int i)</td></tr>
 <tr class="separator:a0d9e56d959df537267c02e52c5badcb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
@@ -117,6 +120,24 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="afd8975ff2a6235c3d1f28f95223c4d46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd8975ff2a6235c3d1f28f95223c4d46">&#9670;&nbsp;</a></span>explainValues()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void explainValues </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This function is responsible to tell the User whith which values he is dealing with. If he is not happy with them he can directly stop the programm and change the values in the constant file accordingly. </p>
+
+</div>
+</div>
 <a id="a0d9e56d959df537267c02e52c5badcb1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0d9e56d959df537267c02e52c5badcb1">&#9670;&nbsp;</a></span>getRandom()</h2>
 
@@ -142,7 +163,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>This function is responsible to to create x random numbers and store then in a vector. We always need to create nbrChoose/10. Which would be Ce or Ci depending on which neuron I want to connect. ATTENTION: the random number can't be i, because the neuron can technically not be connected to itself. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>This function is responsible to create x random numbers and store then in a vector. We always need to create nbrChoose/10. Which would be Ce or Ci depending on which neuron I want to connect. ATTENTION: the random number can't be i, because the neuron can technically not be connected to itself. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">nbrChoose</td><td>is the "pot" of numbers where we can choose from </td></tr>
     <tr><td class="paramname">i</td><td>is the only number we should not generate </td></tr>
@@ -168,6 +189,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Make sure the User knows with which values he deals</p>
 <p>&lt; vectors with all the neurons ex and in</p>
 <p>Creating a set of Neurons</p>
 <p>Simplicitywise first store all ex (Ne) and then all in (Ni) in the allNeuron vector. Start with pushing back Ne exhibitory neurons, then Ni inhibitory neurons.</p>
@@ -184,19 +206,19 @@ Functions</h2></td></tr>
 <p>Start of global clock</p>
 <p>Get the time interval, external current is 0 Attention: Time interval entered is in ms, we work with 0.1ms time steps</p>
 <p>Programm works with time steps, convert time</p>
-<p>Open a new files</p>
-<p>Check that files are open</p>
-<p>Check that opening of files didn't fail</p>
-<p>Entering simulation which runs for the entered time <a class="el" href="struct_interval.html">Interval</a></p>
+<p>Open a new file</p>
+<p>Check that file are open</p>
+<p>Check that opening of file didn't fail</p>
+<p>Entering simulation which runs for the entered time <a class="el" href="struct_interval.html" title="Structure for Interval. Since we enter an interval for our time limitations. ">Interval</a></p>
 <p>This simulation iterates for the time we entered before. It works with 0.1ms time steps and updates each neuron of the allNeuron vector for each time step. It is responsible to coordinate the receiving and giving of time spikes to connected neurons. In addition to this, we store the new generated membrane potential in a seperate file which has been opened before.</p>
-<p>&lt; Check if neuron spiked -&gt; if yes tell its connected neurons</p>
+<p>Check if neuron spiked -&gt; if yes tell its connected neurons</p>
 <p>&lt; If spiked tell to buffers of connected neurons p starts from 1 because nullptr is first element</p>
 <p>&lt; Delay added</p>
-<p>&lt; Store Membran potential in a seperate file</p>
 <p>Store and delete data generated</p>
 <p>Here we store the data of the spikes in a seperate file which has been opened before. We need this for being able to recreate the histogramm and other graphs. In the iteration we also free and delete the pointers of the connection vector of each neuron. The destructor of the neuron will be called automatically at the end of the programm -&gt; no need to call it manually.</p>
+<p>ms</p>
 <p>&lt; store the spike times in file</p>
-<p>Close the files that we have written into </p>
+<p>Close the file that we have written into </p>
 
 </div>
 </div>
@@ -214,7 +236,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Setting the <a class="el" href="struct_interval.html">Interval</a> bonds. <a class="el" href="struct_interval.html">Interval</a> is a structure that has been created. Entered values will always be checked. </p><dl class="section return"><dt>Returns</dt><dd>interval which has been entered. </dd></dl>
+<p>Setting the <a class="el" href="struct_interval.html" title="Structure for Interval. Since we enter an interval for our time limitations. ">Interval</a> bonds. <a class="el" href="struct_interval.html" title="Structure for Interval. Since we enter an interval for our time limitations. ">Interval</a> is a structure that has been created. Entered values will always be checked. </p><dl class="section return"><dt>Returns</dt><dd>interval which has been entered. </dd></dl>
 
 </div>
 </div>

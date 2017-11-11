@@ -36,7 +36,7 @@ public:
     Neuron();
     
     // Constructor with arguments
-    //! This constructor is called if the value J has to be different. Ergo will be called by its subclasses
+    //! This constructor is called if the value J has to be different. Ergo will be called to create different subtypes, like exhibitory and inhibitory neurons.
     Neuron(double Jvalue);
     
     //! Copy constructor
@@ -47,7 +47,7 @@ public:
     
     //Functions
     void putInVector(double time);
-    bool update(int time, double extCurr);
+    bool update(int time, double extCurr, double lambda);
     bool spiked();
     void addConnect(Neuron * other);
     Neuron * getConnectNeuron(int i);
@@ -87,33 +87,5 @@ public:
     }
     
 };
-
-
-/**
- * This class is for the exhibitory neurons, which have a different value for J.
- * The only thing needed, is a constructor which initializes another value for J.
- */
-
-class Exhibitory: public Neuron
-{
-public:
-    //! Constructor
-    Exhibitory(): Neuron(Je){}
-};
-
-
-/**
- * This class is for the inhibitory neurons, which have a different value for J.
- * The only thing needed, is a constructor which initializes another value for J.
- */
-
-class Inhibitory: public Neuron
-{
-public:
-    //! Constructor
-    Inhibitory(): Neuron(Ji){}
-};
-
-
 
 #endif /* neuron_hpp */

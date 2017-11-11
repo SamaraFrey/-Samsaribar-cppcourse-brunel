@@ -23,22 +23,34 @@
 
 using namespace std;
 
+//! Structure for variable values in simulation.
+struct VaryValues{
+    double g;
+    double lambda;
+};
+
 //! Structure for Interval. Since we enter an interval for our time limitations.
 struct Interval{
     double start;
     double end;
 };
 
-void checkValue(double value);
+VaryValues askValues();
 Interval setInterval();
-void explainValues();
-
+void checkValue(const double value);
+void explainValues(const VaryValues& charc, const double& Ji);
 
 vector<int> getRandom(int nbrChoose, int i);
 
 int main() {
-    //! Make sure the User knows with which values he deals
-    explainValues();
+    //! Ask user for different variables, to recreate desired graph
+    VaryValues characteristics = askValues();
+    Interval enteredI = setInterval();
+    
+    const double Ji = -Je * characteristics.g;
+    
+    //! Make sure the User knows with which values he deals with
+    explainValues(characteristics, Ji);
     
     vector<Neuron> allNeuron; //!< vectors with all the neurons ex and in
     
@@ -49,21 +61,17 @@ int main() {
      Start with pushing back Ne exhibitory neurons, then Ni inhibitory neurons.
      */
     
+    //! Pushback exhibitorys
     for(int i = 0; i < Ne; ++i){
-        Exhibitory neuron;
-        allNeuron.push_back(neuron);
-    }
-
-    for(int i = 0; i < Ni; ++i){
-        Inhibitory neuron;
+        Neuron neuron(Je);
         allNeuron.push_back(neuron);
     }
     
-    //! Create random connections inbetween Neurons
-    /*!
-     Connect each neuron to Ce exhib neurons.
-     Start with connection exhib neurons (they are the first in the allNeuron vector, then connect inhib neurons.
-    */
+    //Pushback inhibitorys
+    for(int i = 0; i < Ni; ++i){
+        Neuron neuron(Ji);
+        allNeuron.push_back(neuron);
+    }
     
     for(int j = 0; j < Ne; ++j){
 
@@ -97,21 +105,21 @@ int main() {
 
     for(int a = Ne; a < Ni+Ne; ++a){
        
-        //!< generate vector (size Ce) with random nbrs from 0 to Ne-1 for exhib connections
+        //!< Generate vector (size Ce) with random nbrs from 0 to Ne-1 for exhib connections
         vector<int> randomVector1(getRandom(Ne, a));
         for(size_t p = 0; p < randomVector1.size(); ++p){
             int neuronNbr1 = randomVector1[p];
             
-            //!< having exhibitory neurons from 0th element on
+            //!< Having exhibitory neurons from 0th element on
             allNeuron[a].addConnect(& allNeuron[neuronNbr1]);
         }
         
-        //!< generate vector (size Ci) with random nbrs from 0 to Ni-1 for inhib connections
+        //!< Generate vector (size Ci) with random nbrs from 0 to Ni-1 for inhib connections
         vector<int> randomVector2(getRandom(Ni, a));
         for(size_t k = 0; k < randomVector2.size(); ++k){
             int neuronNbr2 = randomVector2[k];
             
-            //!< start having inhibitory neurons from 10'000th element on
+            //!< Start having inhibitory neurons from 10'000th element on
             allNeuron[a].addConnect(& allNeuron[Ne + neuronNbr2]);
         }
     }
@@ -119,17 +127,15 @@ int main() {
     //! Start of global clock
     int time = 0;
     
-    //! Get the time interval, external current is 0
+    //! Time interval is user defined, external current is 0
     //! Attention: Time interval entered is in ms, we work with 0.1ms time steps
     double extCurr = 0.0;
-    Interval enteredI = setInterval();
-    
     
     int timeStop;
-    double val = enteredI.end - enteredI.start;
+    //double val = enteredI.end - enteredI.start;
     
     //! Programm works with time steps, convert time
-    timeStop = val/h;
+    timeStop = enteredI.end/h;
     
     //! Open a new file
     ofstream spikes;
@@ -145,7 +151,6 @@ int main() {
     
     
     //! Check that opening of file didn't fail
-
     if (spikes.fail() == true){
         cout << "Error, I could not open a the spike file for you." << endl;
         return 0;
@@ -161,14 +166,14 @@ int main() {
     while(time <= timeStop){
         for(size_t i = 0; i < allNeuron.size(); ++i){
             bool spiked;
-            spiked = allNeuron[i].update(time, extCurr);
+            spiked = allNeuron[i].update(time, extCurr, characteristics.lambda);
             
             //! Check if neuron spiked -> if yes tell its connected neurons
             if(spiked){
                 //!< If spiked tell to buffers of connected neurons
                 //!< p starts from 1 because nullptr is first element
                 for(size_t p = 1; p < allNeuron[i].getConnecSize(); ++p){
-                    bool worked = allNeuron[i].getConnectNeuron(p)->receive(time+(D/h)); //!< Delay added
+                    bool worked = allNeuron[i].getConnectNeuron(static_cast<int>(p))->receive(time+(D/h)); //!< Delay added
                     
                     assert(worked == true);
                 }
@@ -179,8 +184,6 @@ int main() {
         ++time;
     }
     
-    cout << "time is: " << (time-1)*h << endl;
-    cout << "time steps are: " << time-1 << endl;
     
     //! Store and delete data generated
     
@@ -188,15 +191,12 @@ int main() {
      Here we store the data of the spikes in a seperate file which has been opened before. We need this for being able to recreate the histogramm and other graphs. In the iteration we also free and delete the pointers of the connection vector of each neuron. The destructor of the neuron will be called automatically at the end of the programm -> no need to call it manually.
     */
     
-    int displayTimeStart = 1000; //! ms
-    int displayTimeEnd = 1200;
-
     for(size_t i = 0; i < allNeuron.size(); ++i){
         
-        //!< store the spike times in file
+        //!< store the spike times for requested time interval in file
         for(size_t j = 0; j < allNeuron[i].getSpikeVectSize(); ++j){
             double val = allNeuron[i].getSpikeVect(j);
-            if(val <= displayTimeEnd and val >= displayTimeStart){
+            if(val <= enteredI.end and val >= enteredI.start){
                 spikes << val << '\t' << i << '\n';
             }
         }
@@ -216,25 +216,39 @@ int main() {
 
 
 /**
- * Checking values. If vaules are not as expected, cout a warning message before ending programm.
- * @param value: the value that has to be checked.
-*/
+ * Getting the specific values from the user, which are characteristic to the graph. Therefore the user can create different graphs with different parameters.
+ * @return characterstic: is of type VaryValues (structure) which defines the different parameters used.
+ */
 
-//!< to check value
-void checkValue(double value){
-    if (value < 0){
-        cout << "Your value is impossible." << endl;
-        EXIT_FAILURE;
-    }
+VaryValues askValues(){
+    VaryValues characteristic;
+    double val;
+    cout << "Enter the a positive double for g (the ratio of Ji/Je): " << endl;
+    cin >> val;
+    assert(!cin.fail());
+    
+    double val2;
+    cout << "Enter the a positive double for lambda (the value for the poisson distribution): " << endl;
+    cin >> val2;
+    assert(!cin.fail());
+    
+    checkValue(val);
+    checkValue(val2);
+    characteristic.g  = val;
+    characteristic.lambda = val2;
+    
+    return characteristic;
 }
+
 
 /**
  * Setting the Interval bonds. Interval is a structure that has been created.
  * Entered values will always be checked.
  * @return  interval which has been entered.
-*/
+ */
 
 Interval setInterval(){
+    cout << "For generating the appropriate graph, please enter the Interval you want to look at." << endl;
     double val;
     cout << "Please enter the time (ms) for the Start of the time Interval:   ";
     cin >> val;
@@ -243,7 +257,7 @@ Interval setInterval(){
     checkValue(val);
     
     double val2;
-    cout << "Please enter the time (ms) for the End of the time Interval:   ";
+    cout << "Please enter the time (ms) for the End of the time Interval:     ";
     cin >> val2;
     
     assert(!cin.fail());
@@ -252,6 +266,34 @@ Interval setInterval(){
     Interval interval = {val, val2};
     return interval;
 }
+
+
+/**
+ * Checking values. If vaules are not as expected, cout a warning message before ending programm.
+ * @param value: the value that has to be checked.
+*/
+
+void checkValue(const double value){
+    if (value < 0){
+        cout << "Your value is impossible." << endl;
+        EXIT_FAILURE;
+    }
+}
+
+
+/**
+ * This function is responsible to tell the User with which values he is dealing with.
+ */
+
+void explainValues(const VaryValues& charc, const double& Ji){
+    cout << "Your are running the simulation with the following values: " << endl;
+    cout << "-- g: " << charc.g << endl;
+    cout << "-- lambda: " << charc.lambda << endl;
+    cout << endl;
+    
+    cout << "Therefore your values are Je = " << Je << " and Ji = " << Ji << " ." << endl;
+}
+
 
 /**
  * This function is responsible to create x random numbers and store then in a vector.
@@ -280,20 +322,6 @@ vector<int> getRandom(int nbrChoose, int i){
     return randomNbrs;
 }
 
-/**
- * This function is responsible to tell the User whith which values he is dealing with. If he is not happy with them he can directly stop the programm and change the values in the constant file accordingly.
- */
-
-void explainValues(){
-    cout << "Your are running the simulation with the following values: " << endl;
-    cout << "-- g: " << g << endl;
-    cout << "-- lambda: " << lambda << endl;
-    cout << endl;
-    
-    cout << "Therefore your values are Je = " << Je << " and Ji = " << Ji << " ." << endl;
-    cout << "If these values are not corresponding to the simulation desired, then please change them in the constant.h file. Otherwise continue:" << endl;
-    cout << endl;
-}
 
 
 

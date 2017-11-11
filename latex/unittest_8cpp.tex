@@ -1,0 +1,73 @@
+\section{unittest.\+cpp File Reference}
+\label{unittest_8cpp}\index{unittest.\+cpp@{unittest.\+cpp}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include \char`\"{}neuron.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}gtest/include/gtest/gtest.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}constants.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ T\+E\+ST} (Neuron\+Test, Membrane\+Potential)
+\item 
+\textbf{ T\+E\+ST} (Neuron\+Test, Ex\+Membrane\+Potential)
+\item 
+\textbf{ T\+E\+ST} (Neuron\+Test, Time\+Comparison)
+\item 
+\textbf{ T\+E\+ST} (Neuron\+Test, Connection\+Size)
+\item 
+\textbf{ T\+E\+ST} (Neuron\+Test, Spiked)
+\item 
+\textbf{ T\+E\+ST} (Neuron\+Test, Reset\+Membrane\+Pot)
+\item 
+int \textbf{ main} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\label{unittest_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{unittest.\+cpp@{unittest.\+cpp}!main@{main}}
+\index{main@{main}!unittest.\+cpp@{unittest.\+cpp}}
+\subsubsection{main()}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+\mbox{\label{unittest_8cpp_ac8fffa2c41bf0fded308ea33cc99edc0}} 
+\index{unittest.\+cpp@{unittest.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!unittest.\+cpp@{unittest.\+cpp}}
+\subsubsection{T\+E\+S\+T()\hspace{0.1cm}{\footnotesize\ttfamily [1/6]}}
+{\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Neuron\+Test}]{,  }\item[{Membrane\+Potential}]{ }\end{DoxyParamCaption})}
+
+T\+E\+S\+T\+I\+NG\+: that membrane potential is never over 30. Technically the membrane potential can overexceed the threshold, but only to a certain amount. \mbox{\label{unittest_8cpp_a9ae3ddd73abc5bb7f258532c33b7823d}} 
+\index{unittest.\+cpp@{unittest.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!unittest.\+cpp@{unittest.\+cpp}}
+\subsubsection{T\+E\+S\+T()\hspace{0.1cm}{\footnotesize\ttfamily [2/6]}}
+{\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Neuron\+Test}]{,  }\item[{Ex\+Membrane\+Potential}]{ }\end{DoxyParamCaption})}
+
+T\+E\+S\+T\+I\+NG\+: the membrane potential can never be smaller then 0 having an exhibitory neuron \mbox{\label{unittest_8cpp_afb68d14b9cc6e43d7e865793296d636e}} 
+\index{unittest.\+cpp@{unittest.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!unittest.\+cpp@{unittest.\+cpp}}
+\subsubsection{T\+E\+S\+T()\hspace{0.1cm}{\footnotesize\ttfamily [3/6]}}
+{\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Neuron\+Test}]{,  }\item[{Time\+Comparison}]{ }\end{DoxyParamCaption})}
+
+T\+E\+S\+T\+I\+NG\+: check that the clock is the same as the global time \mbox{\label{unittest_8cpp_a1cd50acc8515f5cf523e4b5f76695e59}} 
+\index{unittest.\+cpp@{unittest.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!unittest.\+cpp@{unittest.\+cpp}}
+\subsubsection{T\+E\+S\+T()\hspace{0.1cm}{\footnotesize\ttfamily [4/6]}}
+{\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Neuron\+Test}]{,  }\item[{Connection\+Size}]{ }\end{DoxyParamCaption})}
+
+T\+E\+S\+T\+I\+NG\+: check that the connection vector increases in size if a neuron gets a connection (first element is always nullptr, so size = amount of connection+1) \mbox{\label{unittest_8cpp_af6a3a96f9fda0fd1ea3d4fb4d8b237cb}} 
+\index{unittest.\+cpp@{unittest.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!unittest.\+cpp@{unittest.\+cpp}}
+\subsubsection{T\+E\+S\+T()\hspace{0.1cm}{\footnotesize\ttfamily [5/6]}}
+{\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Neuron\+Test}]{,  }\item[{Spiked}]{ }\end{DoxyParamCaption})}
+
+T\+E\+S\+T\+I\+NG\+: if the external current is 0, then the neuron will not spike. If the external current is incredibely high, it must have spiked and therefore increase the spike\+Vect\+Size by 1. $<$ the neuron can\textquotesingle{}t have spiked at time 0 without an external current
+
+$<$ Make neuron spike -\/$>$ it spikes in the update and increases the size of the spike Vect \mbox{\label{unittest_8cpp_ad94c8421eb019f0b3ae551bb4c4f9bd3}} 
+\index{unittest.\+cpp@{unittest.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!unittest.\+cpp@{unittest.\+cpp}}
+\subsubsection{T\+E\+S\+T()\hspace{0.1cm}{\footnotesize\ttfamily [6/6]}}
+{\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Neuron\+Test}]{,  }\item[{Reset\+Membrane\+Pot}]{ }\end{DoxyParamCaption})}
+
+T\+E\+S\+T\+I\+NG\+: If the external current is incredibely high, it must have spiked and therefore have a membrane potential that is 0. 

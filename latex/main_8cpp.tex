@@ -1,0 +1,139 @@
+\section{main.\+cpp File Reference}
+\label{main_8cpp}\index{main.\+cpp@{main.\+cpp}}
+{\ttfamily \#include \char`\"{}neuron.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}constants.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$cassert$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$random$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \textbf{ Interval}
+\begin{DoxyCompactList}\small\item\em Structure for \doxyref{Interval}{p.}{struct_interval}. Since we enter an interval for our time limitations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ check\+Value} (double value)
+\begin{DoxyCompactList}\small\item\em $<$ to check value \end{DoxyCompactList}\item 
+\textbf{ Interval} \textbf{ set\+Interval} ()
+\item 
+void \textbf{ explain\+Values} ()
+\item 
+vector$<$ int $>$ \textbf{ get\+Random} (int nbr\+Choose, int i)
+\item 
+int \textbf{ main} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\label{main_8cpp_af86d5b91822a38a917e8bf420581425e}} 
+\index{main.\+cpp@{main.\+cpp}!check\+Value@{check\+Value}}
+\index{check\+Value@{check\+Value}!main.\+cpp@{main.\+cpp}}
+\subsubsection{check\+Value()}
+{\footnotesize\ttfamily void check\+Value (\begin{DoxyParamCaption}\item[{double}]{value }\end{DoxyParamCaption})}
+
+
+
+$<$ to check value 
+
+Checking values. If vaules are not as expected, cout a warning message before ending programm. 
+\begin{DoxyParams}{Parameters}
+{\em value} & the value that has to be checked. \\
+\hline
+\end{DoxyParams}
+\mbox{\label{main_8cpp_afd8975ff2a6235c3d1f28f95223c4d46}} 
+\index{main.\+cpp@{main.\+cpp}!explain\+Values@{explain\+Values}}
+\index{explain\+Values@{explain\+Values}!main.\+cpp@{main.\+cpp}}
+\subsubsection{explain\+Values()}
+{\footnotesize\ttfamily void explain\+Values (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This function is responsible to tell the User whith which values he is dealing with. If he is not happy with them he can directly stop the programm and change the values in the constant file accordingly. \mbox{\label{main_8cpp_a0d9e56d959df537267c02e52c5badcb1}} 
+\index{main.\+cpp@{main.\+cpp}!get\+Random@{get\+Random}}
+\index{get\+Random@{get\+Random}!main.\+cpp@{main.\+cpp}}
+\subsubsection{get\+Random()}
+{\footnotesize\ttfamily vector$<$ int $>$ get\+Random (\begin{DoxyParamCaption}\item[{int}]{nbr\+Choose,  }\item[{int}]{i }\end{DoxyParamCaption})}
+
+This function is responsible to create x random numbers and store then in a vector. We always need to create nbr\+Choose/10. Which would be Ce or Ci depending on which neuron I want to connect. A\+T\+T\+E\+N\+T\+I\+ON\+: the random number can\textquotesingle{}t be i, because the neuron can technically not be connected to itself. 
+\begin{DoxyParams}{Parameters}
+{\em nbr\+Choose} & is the \char`\"{}pot\char`\"{} of numbers where we can choose from \\
+\hline
+{\em i} & is the only number we should not generate \\
+\hline
+\end{DoxyParams}
+$<$ Size is 10th of nbrs to choose from (10\textquotesingle{}000 -\/$>$ 1\textquotesingle{}000; 2\textquotesingle{}500 -\/$>$ 250)
+
+$<$ Exclude the option to be connected with itself \mbox{\label{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{main.\+cpp@{main.\+cpp}!main@{main}}
+\index{main@{main}!main.\+cpp@{main.\+cpp}}
+\subsubsection{main()}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Make sure the User knows with which values he deals
+
+$<$ vectors with all the neurons ex and in
+
+Creating a set of Neurons
+
+Simplicitywise first store all ex (Ne) and then all in (Ni) in the all\+Neuron vector. Start with pushing back Ne exhibitory neurons, then Ni inhibitory neurons.
+
+Create random connections inbetween Neurons
+
+Connect each neuron to Ce exhib neurons. Start with connection exhib neurons (they are the first in the all\+Neuron vector, then connect inhib neurons.
+
+$<$ generate vector (size Ce) with random nbrs from 0 to Ne-\/1 for exhib connections
+
+$<$ having exhibitory neurons from 0th element on
+
+$<$ start having inhibitory neurons from 10\textquotesingle{}000th element on
+
+Connect each neuron to Ci inhib neurons. Start with connection exhib neurons (they are the first in the all\+Neuron vector, then connect inhib neurons.
+
+Attention\+: inhibitory neurons start from the Ne\textquotesingle{}s value on and we want to go till the end which is at Ne+\+Ni (vector starts with 0)
+
+$<$ generate vector (size Ce) with random nbrs from 0 to Ne-\/1 for exhib connections
+
+$<$ having exhibitory neurons from 0th element on
+
+$<$ start having inhibitory neurons from 10\textquotesingle{}000th element on
+
+Start of global clock
+
+Get the time interval, external current is 0 Attention\+: Time interval entered is in ms, we work with 0.\+1ms time steps
+
+Programm works with time steps, convert time
+
+Open a new file
+
+Check that file are open
+
+Check that opening of file didn\textquotesingle{}t fail
+
+Entering simulation which runs for the entered time \doxyref{Interval}{p.}{struct_interval}
+
+This simulation iterates for the time we entered before. It works with 0.\+1ms time steps and updates each neuron of the all\+Neuron vector for each time step. It is responsible to coordinate the receiving and giving of time spikes to connected neurons. In addition to this, we store the new generated membrane potential in a seperate file which has been opened before.
+
+Check if neuron spiked -\/$>$ if yes tell its connected neurons
+
+$<$ If spiked tell to buffers of connected neurons p starts from 1 because nullptr is first element
+
+$<$ Delay added
+
+Store and delete data generated
+
+Here we store the data of the spikes in a seperate file which has been opened before. We need this for being able to recreate the histogramm and other graphs. In the iteration we also free and delete the pointers of the connection vector of each neuron. The destructor of the neuron will be called automatically at the end of the programm -\/$>$ no need to call it manually.
+
+ms
+
+$<$ store the spike times in file
+
+Close the file that we have written into \mbox{\label{main_8cpp_a3733080ed023d8e513d379e329a58c85}} 
+\index{main.\+cpp@{main.\+cpp}!set\+Interval@{set\+Interval}}
+\index{set\+Interval@{set\+Interval}!main.\+cpp@{main.\+cpp}}
+\subsubsection{set\+Interval()}
+{\footnotesize\ttfamily \textbf{ Interval} set\+Interval (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Setting the \doxyref{Interval}{p.}{struct_interval} bonds. \doxyref{Interval}{p.}{struct_interval} is a structure that has been created. Entered values will always be checked. \begin{DoxyReturn}{Returns}
+interval which has been entered. 
+\end{DoxyReturn}

@@ -1,0 +1,292 @@
+\section{Neuron Class Reference}
+\label{class_neuron}\index{Neuron@{Neuron}}
+
+
+{\ttfamily \#include $<$neuron.\+hpp$>$}
+
+Inheritance diagram for Neuron\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_neuron}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Neuron} ()
+\begin{DoxyCompactList}\small\item\em This constructor is called if no arguments are passed. \end{DoxyCompactList}\item 
+\textbf{ Neuron} (double Jvalue)
+\begin{DoxyCompactList}\small\item\em This constructor is called if the value J has to be different. Ergo will be called by its subclasses. \end{DoxyCompactList}\item 
+\textbf{ Neuron} (const \textbf{ Neuron} \&copy)=default
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+\textbf{ $\sim$\+Neuron} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \textbf{ put\+In\+Vector} (double time)
+\item 
+bool \textbf{ update} (int time, double ext\+Curr)
+\item 
+bool \textbf{ spiked} ()
+\item 
+void \textbf{ add\+Connect} (\textbf{ Neuron} $\ast$other)
+\item 
+\textbf{ Neuron} $\ast$ \textbf{ get\+Connect\+Neuron} (int i)
+\item 
+bool \textbf{ receive} (int time)
+\item 
+bool \textbf{ clean\+Buffer} ()
+\item 
+bool \textbf{ destroy\+Connection} ()
+\item 
+double \textbf{ get\+Mem\+Pot} ()
+\item 
+double \textbf{ get\+Time\+Sp} ()
+\item 
+int \textbf{ get\+Clock} ()
+\item 
+int \textbf{ get\+Nbr\+Sp} ()
+\item 
+size\+\_\+t \textbf{ get\+Connec\+Size} ()
+\item 
+double \textbf{ get\+Spike\+Vect} (size\+\_\+t i)
+\item 
+size\+\_\+t \textbf{ get\+Spike\+Vect\+Size} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\label{class_neuron_a823487d01615fadb8ac19a2768dd9d96}} 
+\index{Neuron@{Neuron}!Neuron@{Neuron}}
+\index{Neuron@{Neuron}!Neuron@{Neuron}}
+\subsubsection{Neuron()\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Neuron\+::\+Neuron (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This constructor is called if no arguments are passed. 
+
+$<$ For debugging purposes our first element of the connection vector is going to be a nullptr
+
+$<$ Buffer of size (D/h+1), with all its entries to be zero \mbox{\label{class_neuron_a08113313e9b6c871c8ce2e813d7f14d5}} 
+\index{Neuron@{Neuron}!Neuron@{Neuron}}
+\index{Neuron@{Neuron}!Neuron@{Neuron}}
+\subsubsection{Neuron()\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Neuron\+::\+Neuron (\begin{DoxyParamCaption}\item[{double}]{Jvalue }\end{DoxyParamCaption})}
+
+
+
+This constructor is called if the value J has to be different. Ergo will be called by its subclasses. 
+
+$<$ For debugging purposes our first element of the connection vector is going to be a nullptr
+
+$<$ Buffer of size (D/h+1), with all its entries to be zero \mbox{\label{class_neuron_a12d7fc474ce96416f151099880596cbb}} 
+\index{Neuron@{Neuron}!Neuron@{Neuron}}
+\index{Neuron@{Neuron}!Neuron@{Neuron}}
+\subsubsection{Neuron()\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Neuron\+::\+Neuron (\begin{DoxyParamCaption}\item[{const \textbf{ Neuron} \&}]{copy }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Copy constructor. 
+
+\mbox{\label{class_neuron_a94a250ce7e167760e593979b899745b1}} 
+\index{Neuron@{Neuron}!````~Neuron@{$\sim$\+Neuron}}
+\index{````~Neuron@{$\sim$\+Neuron}!Neuron@{Neuron}}
+\subsubsection{$\sim$\+Neuron()}
+{\footnotesize\ttfamily Neuron\+::$\sim$\+Neuron (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destructor. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{class_neuron_a337162e9c43f40516784b649f07ee0f9}} 
+\index{Neuron@{Neuron}!add\+Connect@{add\+Connect}}
+\index{add\+Connect@{add\+Connect}!Neuron@{Neuron}}
+\subsubsection{add\+Connect()}
+{\footnotesize\ttfamily void Neuron\+::add\+Connect (\begin{DoxyParamCaption}\item[{\textbf{ Neuron} $\ast$}]{other }\end{DoxyParamCaption})}
+
+This function is responsible to connect neurons together, it pushes the new connected neuron in the existing connection vector. 
+\begin{DoxyParams}{Parameters}
+{\em neuron} & that it is gonna be connected to \\
+\hline
+\end{DoxyParams}
+\mbox{\label{class_neuron_a931fddbafb3c4a5220dfe2d40e0fc249}} 
+\index{Neuron@{Neuron}!clean\+Buffer@{clean\+Buffer}}
+\index{clean\+Buffer@{clean\+Buffer}!Neuron@{Neuron}}
+\subsubsection{clean\+Buffer()}
+{\footnotesize\ttfamily bool Neuron\+::clean\+Buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This function has been created for debugging porpuses only. It makes the code also more readable. \begin{DoxyReturn}{Returns}
+true if the buffer elements have been set to 0 
+\end{DoxyReturn}
+\mbox{\label{class_neuron_a77b6781a4864753504cb6c26f00c61a2}} 
+\index{Neuron@{Neuron}!destroy\+Connection@{destroy\+Connection}}
+\index{destroy\+Connection@{destroy\+Connection}!Neuron@{Neuron}}
+\subsubsection{destroy\+Connection()}
+{\footnotesize\ttfamily bool Neuron\+::destroy\+Connection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This function will be called in the very end to free and delete the pointers of the connection vector. \begin{DoxyReturn}{Returns}
+true if the pointers have been freed 
+\end{DoxyReturn}
+$<$ if connection vector is not empty assert \mbox{\label{class_neuron_a0c6f3326a19ca4623f7a53b4b82e69ce}} 
+\index{Neuron@{Neuron}!get\+Clock@{get\+Clock}}
+\index{get\+Clock@{get\+Clock}!Neuron@{Neuron}}
+\subsubsection{get\+Clock()}
+{\footnotesize\ttfamily int Neuron\+::get\+Clock (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\label{class_neuron_a68bd47e91a15162f7ce767c5350260f2}} 
+\index{Neuron@{Neuron}!get\+Connec\+Size@{get\+Connec\+Size}}
+\index{get\+Connec\+Size@{get\+Connec\+Size}!Neuron@{Neuron}}
+\subsubsection{get\+Connec\+Size()}
+{\footnotesize\ttfamily size\+\_\+t Neuron\+::get\+Connec\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\label{class_neuron_a94672ed8219d66ee2fa6c73bec1c775b}} 
+\index{Neuron@{Neuron}!get\+Connect\+Neuron@{get\+Connect\+Neuron}}
+\index{get\+Connect\+Neuron@{get\+Connect\+Neuron}!Neuron@{Neuron}}
+\subsubsection{get\+Connect\+Neuron()}
+{\footnotesize\ttfamily \textbf{ Neuron} $\ast$ Neuron\+::get\+Connect\+Neuron (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+This function is responsible to show to which neuron it is connected to. It is mainly done to make the private vector connection to be accessible to be read. 
+\begin{DoxyParams}{Parameters}
+{\em i} & is the place in the vector that we wannt to look at \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+neuron at that certain place of the connection vector 
+\end{DoxyReturn}
+$<$ A\+T\+T\+E\+N\+T\+I\+ON\+: connection vector has a nullptr as first element \mbox{\label{class_neuron_a8662cd2c161850aa1141ba0d9247e476}} 
+\index{Neuron@{Neuron}!get\+Mem\+Pot@{get\+Mem\+Pot}}
+\index{get\+Mem\+Pot@{get\+Mem\+Pot}!Neuron@{Neuron}}
+\subsubsection{get\+Mem\+Pot()}
+{\footnotesize\ttfamily double Neuron\+::get\+Mem\+Pot (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\label{class_neuron_a2656be288ae861cf0b2b815adcfef622}} 
+\index{Neuron@{Neuron}!get\+Nbr\+Sp@{get\+Nbr\+Sp}}
+\index{get\+Nbr\+Sp@{get\+Nbr\+Sp}!Neuron@{Neuron}}
+\subsubsection{get\+Nbr\+Sp()}
+{\footnotesize\ttfamily int Neuron\+::get\+Nbr\+Sp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\label{class_neuron_a30899cfd423bf99b7faf944e77f6bc97}} 
+\index{Neuron@{Neuron}!get\+Spike\+Vect@{get\+Spike\+Vect}}
+\index{get\+Spike\+Vect@{get\+Spike\+Vect}!Neuron@{Neuron}}
+\subsubsection{get\+Spike\+Vect()}
+{\footnotesize\ttfamily double Neuron\+::get\+Spike\+Vect (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\label{class_neuron_ad9141cb0791f75a92f0b9d1543346193}} 
+\index{Neuron@{Neuron}!get\+Spike\+Vect\+Size@{get\+Spike\+Vect\+Size}}
+\index{get\+Spike\+Vect\+Size@{get\+Spike\+Vect\+Size}!Neuron@{Neuron}}
+\subsubsection{get\+Spike\+Vect\+Size()}
+{\footnotesize\ttfamily size\+\_\+t Neuron\+::get\+Spike\+Vect\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\label{class_neuron_af4f57ac98e4be891d6e1b04d131a28dd}} 
+\index{Neuron@{Neuron}!get\+Time\+Sp@{get\+Time\+Sp}}
+\index{get\+Time\+Sp@{get\+Time\+Sp}!Neuron@{Neuron}}
+\subsubsection{get\+Time\+Sp()}
+{\footnotesize\ttfamily double Neuron\+::get\+Time\+Sp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\label{class_neuron_a00617ab481fd653493257c84b4e07dda}} 
+\index{Neuron@{Neuron}!put\+In\+Vector@{put\+In\+Vector}}
+\index{put\+In\+Vector@{put\+In\+Vector}!Neuron@{Neuron}}
+\subsubsection{put\+In\+Vector()}
+{\footnotesize\ttfamily void Neuron\+::put\+In\+Vector (\begin{DoxyParamCaption}\item[{double}]{time }\end{DoxyParamCaption})}
+
+This function is responsible to push back given times into the spike\+Vect vector, which we later on need to write into the spike.\+txt file. 
+\begin{DoxyParams}{Parameters}
+{\em time} & the spike occured and has to be saved. \\
+\hline
+\end{DoxyParams}
+\mbox{\label{class_neuron_a6cc00373ace5406d18a4673a82ba0e09}} 
+\index{Neuron@{Neuron}!receive@{receive}}
+\index{receive@{receive}!Neuron@{Neuron}}
+\subsubsection{receive()}
+{\footnotesize\ttfamily bool Neuron\+::receive (\begin{DoxyParamCaption}\item[{int}]{time }\end{DoxyParamCaption})}
+
+This function is responsible to make a neuron receive all the spikes it gets from its connected neurons and to reset the buffer if necessary. 
+\begin{DoxyParams}{Parameters}
+{\em time} & is the global time we need to check where we are at in the buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if neuron received spike -\/$>$ debug purposes 
+\end{DoxyReturn}
+If time is smaller then buffer\+Size we can store +1 at time
+
+$<$ delay D taken in account when function is called
+
+$<$ assert if time is negative -\/$>$ at least 15! bc delay has been added
+
+Store +1 in buffer Modulo will not work for timesteps that are smaller then buffer\+Size (only 15 bc of delay)
+
+If time is overexceeding buffer\+Size, we need to start from the beginning again to store it at correct place
+
+$<$ Set buffer all to 0 because we overexceeded it and we \char`\"{}start\char`\"{} from new with the vector
+
+$<$ assert if buffer has not been cleaned
+
+$<$ assert if store\+Time is bigger then the buffersize
+
+time\+Step is now garantueed smaller then buffersize, so we store +1 \mbox{\label{class_neuron_a95efbf8af058ce38307abc4c229ed046}} 
+\index{Neuron@{Neuron}!spiked@{spiked}}
+\index{spiked@{spiked}!Neuron@{Neuron}}
+\subsubsection{spiked()}
+{\footnotesize\ttfamily bool Neuron\+::spiked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This function is responsible to tell if the neuron spikes.
+
+\begin{DoxyReturn}{Returns}
+true if the neuron spikes false if the neuron doesn\textquotesingle{}t spike 
+\end{DoxyReturn}
+\mbox{\label{class_neuron_a0e559ebeedcccc021e976d38d3fca3fa}} 
+\index{Neuron@{Neuron}!update@{update}}
+\index{update@{update}!Neuron@{Neuron}}
+\subsubsection{update()}
+{\footnotesize\ttfamily bool Neuron\+::update (\begin{DoxyParamCaption}\item[{int}]{time,  }\item[{double}]{ext\+Curr }\end{DoxyParamCaption})}
+
+This function is responsible to update the neuron, meaning it resets the membrane potential, taking account how many spikes it receives and what randomly generated background noise it gets. 
+\begin{DoxyParams}{Parameters}
+{\em time} & is the global time, to see where we are at \\
+\hline
+{\em ext\+Curr} & is the external current which has in ealier steps been entered in the main and now is set to 0 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if neuron spiked 
+\end{DoxyReturn}
+Since buffer has size D/h+1 the time is going to exceed it fast. Therefore we interate through the buffervector and start again everytime when we exceed it, we take the modulo of the time\+Step and the buffersize to be sure where to access the buffer at.
+
+Count the spikes received at time
+
+$<$ first time step is at the zero element of vector and we start with time 0
+
+The whole clocksystem is in steps, therefore the refractorytime has to be used in steps as well
+
+$<$ Refractorytime is for sure never gonna be 0; so neither is the steps
+
+The neuron is insensitiv for a refacttime If my spike\+Vect is not empty, then check when neuron has had last spike
+
+$<$ If last spike as occured less then refracttime ago
+
+Generating background noise of the brain by possion distribution
+
+$<$ Pois() gives me back an int as default
+
+$<$ change type
+
+$<$ assert -\/$>$ background noise can\textquotesingle{}t be negativ (Pois() is never negative)
+
+Calculate membrane potential
+
+Set it as new potential
+
+Check if neuron spiked
+
+$<$ Increase the nbr of spikes the neuron itself has
+
+$<$ Store the time in the spike vector and set spike time 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\textbf{ neuron.\+hpp}\item 
+\textbf{ neuron.\+cpp}\end{DoxyCompactItemize}
