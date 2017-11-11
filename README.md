@@ -19,3 +19,7 @@ Issues
 ----------------------
 
 This programm is not a correct representation of the brain, it is way to simplyfied. It is biologically not accurate. This has not been the aim of this project, therefore one can use this programm only  in this context and only for generating the graphs.
+
+For the repository has explicitly been created for the hand over of the project, before made steps have not been saved in this certain repository. Therefore a link to the old repository is to be found at the end of this README file. If necessary it can be accessed to see the progress that programm has been went through.
+
+https://github.com/Samsaribar/neuronProgram.git
